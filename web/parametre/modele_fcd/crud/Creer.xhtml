@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeleCreerDlg" 
+                  widgetVar="ModeleCreerDialog" 
+                  modal="true" resizable="false" 
+                  appendTo="@(body)" 
+                  width="60%"
+                  height="550px"
+                  header="#{langue['Titre.Dlg.Creation']}: #{langue.modele}" 
+                  closeOnEscape="true">
+
+            <h:form id="ModeleCreerForm">
+                <h:panelGroup id="display">
+                    <h:panelGrid columns="3" columnClasses ="column">
+
+                        <p:outputLabel value="#{langue.nom}" for="nom" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="nom" value="#{modeleFcdController.modelFcd.nom}" required="true" 
+                                         requiredMessage="#{langue['Conv.Nom']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="nom"/>
+
+                        <p:outputLabel value="#{langue.annee}" for="annee" />
+                        <p:inputText style="width: 120px" id="annee" value="#{modeleFcdController.modelFcd.annee}" required="true" 
+                                     requiredMessage="#{langue.type} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="annee"/>
+
+                        <p:outputLabel value="Bank Name Code" for="BankNameCode" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="BankNameCode" value="#{modeleFcdController.modelFcd.bankNameCode}" required="true" 
+                                         requiredMessage="#{langue['regex.declaration']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="BankNameCode"/>
+
+                        <p:outputLabel value="Bank Number Account Code" for="BankNumberAccountCode" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="BankNumberAccountCode" value="#{modeleFcdController.modelFcd.bankAccountNumberCode}" required="true" 
+                                         requiredMessage="#{langue['regex.validation']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="BankNumberAccountCode"/>
+
+                        <p:outputLabel value="Total Amount Code" for="TotalAmountCode" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="TotalAmountCode" value="#{modeleFcdController.modelFcd.totalAmountCode}" required="true" 
+                                         requiredMessage="#{langue['regex.pourcentage_error']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="TotalAmountCode"/>
+
+                    </h:panelGrid>
+
+                    <p:separator/>
+
+                    <p:commandButton style="float: right" actionListener="#{modeleFcdController.create()}" value="#{langue['Conv.Enregistrer']}" 
+                                     update="display,:ModeleListerForm:datalist,:notify1,:actionsForm" />
+
+                    <p:commandButton style="float: left" value="#{langue.annuler}" oncomplete="PF('ModeleCreerDialog').hide()"/>
+
+                </h:panelGroup>  
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

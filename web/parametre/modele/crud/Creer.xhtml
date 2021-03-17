@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModelCreerDlg" 
+                  widgetVar="ModelCreerDialog" 
+                  modal="true" resizable="false" 
+                  appendTo="@(body)" 
+                  width="60%"
+                  height="550px"
+                  header="#{langue['Titre.Dlg.Creation']}: #{langue.modele}" 
+                  closeOnEscape="true">
+
+            <h:form id="ModelCreerForm">
+                <h:panelGroup id="display">
+                    <h:panelGrid columns="3" columnClasses ="column">
+
+                        <p:outputLabel value="#{langue.nom}" for="nom" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="nom" value="#{modeleController.model.name}" required="true" 
+                                         requiredMessage="#{langue['Conv.Nom']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="nom"/>
+
+                        <p:outputLabel value="#{langue.type}" for="type" />
+                        <p:inputText style="width: 75px" id="type" value="#{modeleController.model.type}" required="true" 
+                                     requiredMessage="#{langue.type} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="type"/>
+
+                        <p:outputLabel value="#{langue['regex.declaration']}" for="declaration" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="declaration" value="#{modeleController.model.declaredRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.declaration']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="declaration"/>
+
+                        <p:outputLabel value="#{langue['regex.validation']}" for="validation" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="validation" value="#{modeleController.model.validatedRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.validation']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="validation"/>
+
+                        <p:outputLabel value="#{langue['regex.pourcentage_error']}" for="pourcentage_error" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="pourcentage_error" value="#{modeleController.model.percentageErrorRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.pourcentage_error']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="pourcentage_error"/>
+
+                        <p:outputLabel value="#{langue['regex.unit_cost']}" for="unit_cost" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="unit_cost" value="#{modeleController.model.unitPriceRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.unit_cost']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="unit_cost"/>
+
+                        <p:outputLabel value="#{langue['regex.total_amount']}" for="total_amount" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="total_amount" value="#{modeleController.model.totalAmountRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.total_amount']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="total_amount"/>
+
+                        <p:outputLabel value="#{langue['regex.total_1']}" for="total_1" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="total_1" value="#{modeleController.model.total1Regex}" required="true" 
+                                         requiredMessage="#{langue['regex.total_1']}: #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="total_1"/>
+
+                        <p:outputLabel value="#{langue['regex.pourcentage_be']}" for="pourcentage_be" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="pourcentage_be" value="#{modeleController.model.percentageBonusEquiteRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.pourcentage_be']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="pourcentage_be"/>
+
+                        <p:outputLabel value="#{langue['regex.bonus_equite']}" for="bonus_equite" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="bonus_equite" value="#{modeleController.model.bonusEquiteRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.bonus_equite']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="bonus_equite"/>
+
+                        <p:outputLabel value="#{langue['regex.total_2']}" for="total_2" />
+                        <p:inputTextarea style="width: 100%" cols="250" rows="1" id="total_2" value="#{modeleController.model.total2Regex}" required="true" 
+                                         requiredMessage="#{langue['regex.total_2']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="total_2"/>
+
+                        <p:outputLabel value="#{langue['regex.quarterly_production_regex']}" for="quarterly_production" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quarterly_production" value="#{modeleController.model.quarterlyProductionRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.quarterly_production_regex']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="quarterly_production"/>
+
+
+                        <p:outputLabel value="#{langue['regex.tarrif_bonus_qualite']}" for="tarrif_bonus_qualite" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="tarrif_bonus_qualite" value="#{modeleController.model.tarrifBonusQualiteRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.tarrif_bonus_qualite']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="tarrif_bonus_qualite"/>
+
+                        <p:outputLabel value="#{langue['regex.bonus_qualite']}" for="bonus_qualite" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="bonus_qualite" value="#{modeleController.model.bonusAmeliorationQualiteRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.bonus_qualite']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="bonus_qualite"/>
+
+
+                        <p:outputLabel value="#{langue['regex.quarterly_bonus_qualite']}" for="quarterly_bonus_qualite" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quarterly_bonus_qualite" value="#{modeleController.model.quarterlyBonusQualiteRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.quarterly_bonus_qualite']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="quarterly_bonus_qualite"/>
+
+
+                        <p:outputLabel value="#{langue['regex.total3']}" for="total3" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="total3" value="#{modeleController.model.total3Regex}" required="true" 
+                                         requiredMessage="#{langue['regex.total3']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="total3"/>
+
+                        <p:outputLabel value="#{langue['regex.total_general']}" for="total_general" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="total_general" value="#{modeleController.model.totalGeneralRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.total_general']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="total_general"/>
+                               
+                        <p:outputLabel value="#{langue['regex.quality_assessement_score_weighted']}" for="quality_assessement_score_weighted" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quality_assessement_score_weighted" value="#{modeleController.model.qualityAssessmentWeightedScoreRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.quality_assessement_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="quality_assessement_score_weighted"/>
+                        
+                        <p:outputLabel value="#{langue['regex.quality_perceived_score_weighted']}" for="quality_perceived_score_weighted" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quality_perceived_score_weighted" value="#{modeleController.model.qualityPerceivedWeightedScoreRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.quality_perceived_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="quality_perceived_score_weighted"/>
+                        
+                        <p:outputLabel value="#{langue['regex.index_tool_score_weighted']}" for="index_tool_score_weight" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="index_tool_score_weight" value="#{modeleController.model.indexToolWeightedScoreRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.index_tool_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="index_tool_score_weight"/>
+                        
+                        
+                        <p:outputLabel value="#{langue['regex.global_quality_score']}" for="global_quality_score" />
+                        <p:inputTextarea style="width: 50%" cols="250" rows="1" id="global_quality_score" value="#{modeleController.model.globalQualityScoreRegex}" required="true" 
+                                         requiredMessage="#{langue['regex.global_quality_score']} : #{langue['Conv.ValeurRequise']}"/>
+                        <p:message for="global_quality_score"/>
+
+                    </h:panelGrid>
+
+                    <p:separator/>
+
+                    <p:commandButton style="float: right" actionListener="#{modeleController.create()}" value="#{langue['Conv.Enregistrer']}" 
+                                     update="display,:ModelListerForm:datalist,:notify1,:actionsForm" />
+
+                    <p:commandButton style="float: left" value="#{langue.annuler}" oncomplete="PF('ModelCreerDialog').hide()"/>
+
+                </h:panelGroup>  
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

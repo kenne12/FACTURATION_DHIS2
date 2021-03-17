@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search..."/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </li>
+
+                <!-- sécurité -->
+
+                <li>
+                    <a href="#{request.contextPath}/index.html"><i class="fa fa-home fa-fw"></i>#{langue.accueil}</a>
+                </li>
+                <li id="securite">
+                    <a href="#"><i class="fa fa-key"></i>#{langue.securite}<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#{request.contextPath}/securite/utilisateur/utilisateur.html"><i class="fa fa-user fa-fw"></i>#{langue.utilisateurs}</a>
+                        </li>
+                        <li>
+                            <a href="#{request.contextPath}/securite/privilege/privilege.html"><i class="fa fa-legal fa-fw"></i>#{langue.privileges}</a>
+                        </li>  
+                    </ul>
+                </li>
+
+                <li id="parametrage">
+                    <a href="#"><i class="fa fa-wrench"></i> #{langue.parametrage} <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">                               
+                        <li>
+                            <a href="#{request.contextPath}/parametre/modele/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']}</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#{request.contextPath}/parametre/modele_fcd/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']} FCD</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li id="traitement">
+                    <a href="#"><i class="fa fa-cogs"></i>#{langue.traitement}<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="#{request.contextPath}/operation/impression/impression.html">
+                                <i class="fa fa-file-pdf-o fa-fw"></i>
+                                #{langue.impression_facture} Init
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#{request.contextPath}/operation/impression_2/impression.html">
+                                <i class="fa fa-file-pdf-o fa-fw"></i>
+                                #{langue.impression_facture} Test
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#{request.contextPath}/operation/impression_3/impression.html">
+                                <i class="fa fa-file-pdf-o fa-fw"></i>
+                                #{langue.impression_facture} Déf
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#{request.contextPath}/operation/facture_consolidee_ds/impression.html">
+                                <i class="fa fa-file-pdf-o fa-fw"></i>
+                                #{langue.impression_facture} Consolidée Ds
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+
+</ui:composition>
+
+
+
+

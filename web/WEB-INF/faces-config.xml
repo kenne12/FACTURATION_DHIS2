@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <!-- URL du package contenant les message_XX.properties -->
+        <resource-bundle>
+            <base-name>/langues/langue</base-name>
+            <var>langue</var>
+        </resource-bundle>
+        <!-- Ajout de la langue par défaut et des langues supportées -->
+        <locale-config>
+            <default-locale>fr</default-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>       
+    </application>
+    
+    <managed-bean>
+        <description>Bean d'impression des factures</description>
+        <managed-bean-name>impressionController</managed-bean-name>
+        <managed-bean-class>controllers.impression.ImpressionController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <description>Bean d'impression des factures normée</description>
+        <managed-bean-name>impressionNormeeController</managed-bean-name>
+        <managed-bean-class>controllers.impressionNormee.ImpressionNormeeController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <description>Bean de gestion des modèles </description>
+        <managed-bean-name>modeleController</managed-bean-name>
+        <managed-bean-class>controllers.modele.ModeleController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <description>Bean d'impression des factures </description>
+        <managed-bean-name>impressionNormeeFController</managed-bean-name>
+        <managed-bean-class>controllers.impressionNormeeF.ImpressionNormeeFController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <description>Bean d'impression des factures consolidées de DS </description>
+        <managed-bean-name>factureConsolideeDsController</managed-bean-name>
+        <managed-bean-class>controllers.FactureConsolideeDs.FactureConsolideeDsController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>   
+
+<managed-bean>
+        <description>Bean de gestion des modèles factures consolidées de DS </description>
+        <managed-bean-name>modeleFcdController</managed-bean-name>
+        <managed-bean-class>controllers.modele_fcd.ModeleFcdController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+</faces-config>

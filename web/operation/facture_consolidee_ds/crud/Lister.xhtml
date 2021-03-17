@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ArticleListerForm">
+
+        <p:messages id="growl" closable="true">
+            <p:effect type="pulsate" event="load" delay="50" />
+        </p:messages>
+
+        <br/>
+        <div class="row">
+            
+            <div class="col-md-3">
+                <p:tree value="#{factureConsolideeDsController.root}" selection="#{factureConsolideeDsController.selected}" selectionMode="single" var="node" >
+                    <p:treeNode>
+                        <h:outputLabel value="#{node}" />
+                    </p:treeNode>
+                </p:tree>
+            </div>
+
+            <div class="col-md-9">
+
+                <center>
+                    <p:panelGrid columns="6">
+
+                        <h:outputLabel value="Periode" />
+                        <p:selectOneMenu filter="true" value="#{factureConsolideeDsController.period.periodid}">
+                            <f:selectItem itemLabel="#{langue.choisir}" itemValue="0" />
+                            <f:selectItems value="#{factureConsolideeDsController.periods}" var="period" itemLabel="#{factureConsolideeDsController.returnDateLabel(period.startdate ,  period.enddate)}" itemValue="#{period.periodid}" />
+                            <p:ajax />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Type" />
+                        <p:selectOneMenu filter="true" value="#{factureConsolideeDsController.modelFcd.modelId}">
+                            <f:selectItem itemLabel="#{langue.choisir}" itemValue="0" />
+                            <f:selectItems value="#{factureConsolideeDsController.modelFcds}" var="item" itemLabel="#{item.nom}" itemValue="#{item.modelId}" />
+                            <p:ajax />
+                        </p:selectOneMenu>
+
+                        <p:commandButton value="#{langue.recherche}" 
+                                         actionListener="#{factureConsolideeDsController.search()}"
+                                         update="datalist,printBtn,:notify1"
+                                         onclick="PF('AjaxNotifyDialog').show()"/>
+
+                        <p:commandButton id="printBtn" disabled="#{factureConsolideeDsController.imprimer}" icon="ui-icon-print" value="#{langue.imprimer}" 
+                                         actionListener="#{factureConsolideeDsController.imprimer()}"
+                                         update=":FactureImprimerForm"
+                                         onclick="PF('AjaxNotifyDialog').show()"/>
+
+                    </p:panelGrid>
+                </center>
+
+                <br/>
+
+                <p:panel header="#{langue.details_facture}">                    
+                    <p:dataTable id="datalist"
+                                 value="#{factureConsolideeDsController.listDataValue}"
+                                 var="item"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="#{factureConsolideeDsController.listDataValue.size()}"
+                                 style="text-align: center;"
+                                 rowsPerPageTemplate="10,20,30,40,50">
+
+                        <p:column style="width: 30%;text-align: left;word-break: break-all" filterBy="#{item.organisationunit.name}">
+                            <f:facet name="header">
+                                <h:outputText value="Organisation Unit"/>
+                            </f:facet>
+                            <h:outputText value="#{item.organisationunit.name}"/>
+                        </p:column>
+
+                        <p:column style="width: 25% ; text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Bank Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bankName}" />
+                        </p:column>
+
+                        <p:column style="width: 30% ; text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Bank Account Number"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bankAccountNumber}" />
+                        </p:column>
+
+                        <p:column style="width: 15% ; text-align: right">
+                            <f:facet name="header">
+                                <h:outputText value="Montant"/>
+                            </f:facet>
+                            <h:outputText value="#{item.amount}">
+                                <f:convertNumber />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:columnGroup type="footer">
+                            <p:row>
+                                <p:column colspan="3" style="text-align:left" footerText="Totaux" />                                       
+                                <p:column style="text-align:right" footerText="#{factureConsolideeDsController.format(factureConsolideeDsController.total)}" />
+                            </p:row>
+                        </p:columnGroup>
+
+                    </p:dataTable>
+
+                </p:panel>
+
+            </div>
+
+        </div>
+
+    </h:form>
+
+    <!-- ****************************************Information************************************************************************************************************************************************************************************************************** -->
+
+    <p:dialog id="notify1" widgetVar="NotifyDialog1" height="300" width="600" resizable="true" modal="true" style="text-align: center; font-size: 14px; font-family: Cambria;">
+        <f:facet name="header">
+            <h:outputText style="font-family: Cambria; font-size: 14px;" value="#{factureConsolideeDsController.routine.titleNotify}" />
+        </f:facet>
+        <h:form id="NotifyForm1">
+            <h:graphicImage id="nt_img" url="#{factureConsolideeDsController.routine.iconMessage}" style="cursor:pointer" />
+
+            <hr size="3" style="background-color: cornflowerblue;"/>
+
+            <h:outputText id="nt_msg" value="#{factureConsolideeDsController.routine.message}"/>
+
+            <hr size="3" style="background-color: cornflowerblue; margin-top: 5%;"/>
+
+            <p:commandButton style="font-family: Cambria; font-size: 14px;" value="#{langue.fermer}" onclick="PF('NotifyDialog1').hide()" type="button" immediate="true"/>
+
+            <hr size="3" style="background-color: cornflowerblue;"/>
+        </h:form>
+    </p:dialog>
+
+    <!-- ****************************************Information************************************************************************************************************************************************************************************************************** -->
+
+</ui:composition>
