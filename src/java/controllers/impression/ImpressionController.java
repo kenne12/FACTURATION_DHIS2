@@ -43,6 +43,9 @@ public class ImpressionController extends AbstractImpressionController implement
     @PostConstruct
     private void init() {
         try {
+
+            modeImpression = 1;
+
             root = new DefaultTreeNode("Root", null);
             selected = new DefaultTreeNode();
             List<Organisationunit> organisationunits = organisationunitFacadeLocal.findByParentNull();
@@ -224,7 +227,6 @@ public class ImpressionController extends AbstractImpressionController implement
                             data_elements_treated.add(det);
                         }
                     }
-
 
                     System.err.println("Taille declared : " + data_elements_string.size());
                     System.err.println("-----------------------------Fin Déclaration-------------");

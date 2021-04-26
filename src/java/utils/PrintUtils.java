@@ -363,7 +363,7 @@ public class PrintUtils {
         return fileName;
     }
 
-    public static String printFactureConsolideeDs(Organisationunit ou, List<DataConstituantFCD> dataConstituants, String periodString, String ou_region) {
+    public static String printFactureConsolideeDs(Organisationunit ou, List<DataConstituantFCD> dataConstituants, String periodString, String ou_region, String titreFacture) {
         String fileName = "";
         try {
 
@@ -382,7 +382,7 @@ public class PrintUtils {
             entete_1.addCell(PrintUtils.createPdfPCell("" + Utilitaires.formatStringMaj(ou_region), 1, new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD), 0, 0, 0, 0));
             entete_1.addCell((PrintUtils.createPdfPCell("" + Utilitaires.formatStringMaj(ou.getName()), 1, new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD), 0, 0, 0, 0)));
 
-            entete_1.addCell(PrintUtils.createPdfPCell(" "+routine.localizeMessage("periode"), 1, new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL), 0, 0, 0, 0));
+            entete_1.addCell(PrintUtils.createPdfPCell(" " + routine.localizeMessage("periode"), 1, new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL), 0, 0, 0, 0));
             entete_1.addCell(PrintUtils.createPdfPCell("" + Utilitaires.formatStringMaj(periodString), 1, new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD), 0, 0, 0, 0));
 
             rapport.add(entete_1);
@@ -392,16 +392,16 @@ public class PrintUtils {
             PdfPTable table = new PdfPTable(widths);
             table.setWidthPercentage(100);
 
-            Paragraph titre = new Paragraph("Consolidated Payments", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+            Paragraph titre = new Paragraph(titreFacture, new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
             titre.setAlignment(Element.ALIGN_CENTER);
             rapport.add(titre);
 
             rapport.add(new Paragraph(" "));
 
-            table.addCell(PrintUtils.createPdfPCell(""+routine.localizeMessage("formation_sanitaire"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
-            table.addCell(PrintUtils.createPdfPCell(""+routine.localizeMessage("banque"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
-            table.addCell(PrintUtils.createPdfPCell(""+routine.localizeMessage("bank_account_number"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
-            table.addCell(PrintUtils.createPdfPCell("Total Amount", 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
+            table.addCell(PrintUtils.createPdfPCell("" + routine.localizeMessage("formation_sanitaire"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
+            table.addCell(PrintUtils.createPdfPCell("" + routine.localizeMessage("banque"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
+            table.addCell(PrintUtils.createPdfPCell("" + routine.localizeMessage("bank_account_number"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
+            table.addCell(PrintUtils.createPdfPCell("" + routine.localizeMessage("montant"), 2, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD)));
 
             Integer total = 0;
             for (DataConstituantFCD d : dataConstituants) {
@@ -422,7 +422,7 @@ public class PrintUtils {
 
             table.addCell(PrintUtils.createPdfPCell(" Total ", 3, 3, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL)));
             table.addCell(PrintUtils.createPdfPCell(" " + JsfUtil.formaterStringMoney(total), 3, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL)));
-            
+
             rapport.add(table);
 
             float[] width_signature = {2.0f, 2.5f, 2f, 2.5f, 2.5f, 2.0f};

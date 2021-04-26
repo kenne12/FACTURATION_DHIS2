@@ -11,7 +11,7 @@
                   widgetVar="ModeleCreerDialog" 
                   modal="true" resizable="false" 
                   appendTo="@(body)" 
-                  width="60%"
+                  width="80%"
                   height="550px"
                   header="#{langue['Titre.Dlg.Creation']}: #{langue.modele}" 
                   closeOnEscape="true">
@@ -29,6 +29,11 @@
                         <p:inputText style="width: 120px" id="annee" value="#{modeleFcdController.modelFcd.annee}" required="true" 
                                      requiredMessage="#{langue.type} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="annee"/>
+                        
+                        <p:outputLabel value="Titre de Facture" for="facture" />
+                        <p:inputText style="width: 100%" id="facture" value="#{modeleFcdController.modelFcd.titre}" required="true" 
+                                     requiredMessage="Titre de facture"/>
+                        <p:message for="facture"/>
 
                         <p:outputLabel value="Bank Name Code" for="BankNameCode" />
                         <p:inputTextarea style="width: 100%" cols="250" rows="1" id="BankNameCode" value="#{modeleFcdController.modelFcd.bankNameCode}" required="true" 

@@ -1,5 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
@@ -36,11 +37,11 @@
                     <a href="#"><i class="fa fa-wrench"></i> #{langue.parametrage} <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">                               
                         <li>
-                            <a href="#{request.contextPath}/parametre/modele/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']}</a>
+                            <a href="#{request.contextPath}/parametre/modele/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']} PCA / PMA</a>
                         </li>
                         
                         <li>
-                            <a href="#{request.contextPath}/parametre/modele_fcd/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']} FCD</a>
+                            <a href="#{request.contextPath}/parametre/modele_fcd/modele.html"><i class="fa fa-institution fa-fw"></i>#{langue['facture.modele']} FCD </a>
                         </li>
                     </ul>
                 </li>
@@ -52,28 +53,35 @@
                         <li>
                             <a href="#{request.contextPath}/operation/impression/impression.html">
                                 <i class="fa fa-file-pdf-o fa-fw"></i>
-                                #{langue.impression_facture} Init
+                                #{langue.facture} Fosa - PCA
                             </a>
                         </li>
+                        
+                       <!--<li jsf:rendrerd="false">
+                            <a href="#{request.contextPath}/operation/impression/impression.html">
+                                <i class="fa fa-file-pdf-o fa-fw"></i>
+                                #{langue.facture} Fosa - PMA
+                            </a>
+                        </li>-->
                         
                         <li>
                             <a href="#{request.contextPath}/operation/impression_2/impression.html">
                                 <i class="fa fa-file-pdf-o fa-fw"></i>
-                                #{langue.impression_facture} Test
+                                #{langue.impression_facture} Fosa - Normée
                             </a>
                         </li>
                         
-                        <li>
+                       <!-- <li>
                             <a href="#{request.contextPath}/operation/impression_3/impression.html">
                                 <i class="fa fa-file-pdf-o fa-fw"></i>
                                 #{langue.impression_facture} Déf
                             </a>
-                        </li>
+                        </li>-->
                         
                         <li>
                             <a href="#{request.contextPath}/operation/facture_consolidee_ds/impression.html">
                                 <i class="fa fa-file-pdf-o fa-fw"></i>
-                                #{langue.impression_facture} Consolidée Ds
+                                #{langue.facture} Consolidée District
                             </a>
                         </li>
                     </ul>

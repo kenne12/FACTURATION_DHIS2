@@ -14,20 +14,17 @@
 
         <br/>
 
-        <div style="width: 100%">
+        <div class="row">
 
-            <div style="float: left ; width: 25%">
-
+            <div class="col-md-3">
                 <p:tree value="#{impressionNormeeController.root}" selection="#{impressionNormeeController.selected}" selectionMode="single" var="node" >
                     <p:treeNode>
                         <h:outputLabel value="#{node}" />
                     </p:treeNode>
                 </p:tree>
-
             </div>
 
-            <div style="float: right ; width: 75%">
-
+            <div class="col-md-9">
                 <center>
                     <p:panelGrid columns="6">
 
@@ -60,7 +57,7 @@
                 </center>
 
                 <br/>
-
+                
                 <p:panel header="#{langue.details_facture}">                    
                     <p:dataTable id="datalist"
                                  value="#{impressionNormeeController.dataConstituants}"
@@ -191,7 +188,6 @@
             </div>
 
         </div>
-
     </h:form>
 
     <!-- ****************************************Information************************************************************************************************************************************************************************************************************** -->

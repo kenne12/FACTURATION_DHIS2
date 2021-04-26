@@ -269,7 +269,7 @@ public class FactureConsolideeDsController extends AbstractFactureConsolideeDsCo
         try {
             String periodString = returnDateLabel(period.getStartdate(), period.getEnddate());
             Organisationunit ou_region = organisationunitFacadeLocal.find(organisationunit.getParentid().getOrganisationunitid());
-            printFileName = PrintUtils.printFactureConsolideeDs(organisationunit, listDataValue, periodString, ou_region.getName());
+            printFileName = PrintUtils.printFactureConsolideeDs(organisationunit, listDataValue, periodString, ou_region.getName(), modelFcd.getTitre());
             RequestContext.getCurrentInstance().execute("PF('AjaxNotifyDialog').hide()");
             RequestContext.getCurrentInstance().execute("PF('FactureImprimerDialog').show()");
         } catch (Exception e) {

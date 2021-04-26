@@ -30,7 +30,12 @@ public class Model implements Serializable {
     private String name;
 
     @NotNull
+    @Column(length = 50)
     private String type;
+
+    @NotNull
+    @Column(length = 60)
+    private String titre;
 
     @Column(name = "declared_regex", length = 100, nullable = false)
     private String declaredRegex;
@@ -270,6 +275,14 @@ public class Model implements Serializable {
 
     public void setGlobalQualityScoreRegex(String globalQualityScoreRegex) {
         this.globalQualityScoreRegex = globalQualityScoreRegex;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     @Override

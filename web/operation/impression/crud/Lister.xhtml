@@ -14,19 +14,16 @@
 
         <br/>
 
-        <div style="width: 100%">
-
-            <div style="float: left ; width: 25%">
-
+        <div class="row">
+            <div class="col-md-3">
                 <p:tree value="#{impressionController.root}" selection="#{impressionController.selected}" selectionMode="single" var="node" >
                     <p:treeNode>
                         <h:outputLabel value="#{node}"  />
                     </p:treeNode>
                 </p:tree>
-
             </div>
 
-            <div style="float: right ; width: 75%">
+            <div class="col-md-9">
 
                 <center>
                     <p:panelGrid columns="6">
@@ -61,135 +58,130 @@
 
                 <br/>
 
-                <p:panel header="#{langue.details_facture}">                    
-                    <p:dataTable id="datalist"
-                                 value="#{impressionController.dataConstituants}"
-                                 var="item"
-                                 rowKey="#{item.id}"
-                                 paginator="true"
-                                 rows="#{impressionController.dataConstituants.size()}"
-                                 style="text-align: center;"
-                                 rowsPerPageTemplate="10,20,30,40,50">
+                <p:dataTable id="datalist"
+                             value="#{impressionController.dataConstituants}"
+                             var="item"
+                             rowKey="#{item.id}"
+                             paginator="true"
+                             rows="#{impressionController.dataConstituants.size()}"
+                             style="text-align: center;"
+                             rowsPerPageTemplate="10,20,30,40,50">
 
-                        <p:column style="width: 56%;text-align: left;word-break: break-all" filterBy="#{item.dataelement.name}">
-                            <f:facet name="header">
-                                <h:outputText value="Indicateur"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dataelement.name}"/>
-                        </p:column>
+                    <p:column style="width: 56%;text-align: left;word-break: break-all" filterBy="#{item.dataelement.name}">
+                        <f:facet name="header">
+                            <h:outputText value="Indicateur"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dataelement.name}"/>
+                    </p:column>
 
-                        <p:column style="width: 10% ; text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Qté declarée"/>
-                            </f:facet>
-                            <h:outputText value="#{item.declared}">
-                                <f:convertNumber />
-                            </h:outputText>
-                        </p:column>
+                    <p:column style="width: 10% ; text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Qté declarée"/>
+                        </f:facet>
+                        <h:outputText value="#{item.declared}">
+                            <f:convertNumber />
+                        </h:outputText>
+                    </p:column>
 
-                        <p:column style="width: 10% ; text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="Qté validée"/>
-                            </f:facet>
-                            <h:outputText value="#{item.validated}">
-                                <f:convertNumber />
-                            </h:outputText>
-                        </p:column>
+                    <p:column style="width: 10% ; text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Qté validée"/>
+                        </f:facet>
+                        <h:outputText value="#{item.validated}">
+                            <f:convertNumber />
+                        </h:outputText>
+                    </p:column>
 
-                        <p:column style="width: 7% ; text-align: center">
-                            <f:facet name="header">
-                                <h:outputText value="% Error"/>
-                            </f:facet>
-                            <h:outputText value="#{item.percentage}">
-                                <f:convertNumber pattern="0.00"/>
-                            </h:outputText>
-                        </p:column>
+                    <p:column style="width: 7% ; text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="% Error"/>
+                        </f:facet>
+                        <h:outputText value="#{item.percentage}">
+                            <f:convertNumber pattern="0.00"/>
+                        </h:outputText>
+                    </p:column>
 
-                        <p:column style="width: 10% ; text-align: right">
-                            <f:facet name="header">
-                                <h:outputText value="C Unitaire"/>
-                            </f:facet>
-                            <h:outputText value="#{item.unitPrice}">
-                                <f:convertNumber/>
-                            </h:outputText>
-                        </p:column>
+                    <p:column style="width: 10% ; text-align: right">
+                        <f:facet name="header">
+                            <h:outputText value="C Unitaire"/>
+                        </f:facet>
+                        <h:outputText value="#{item.unitPrice}">
+                            <f:convertNumber/>
+                        </h:outputText>
+                    </p:column>
 
-                        <p:column style="width: 13%; text-align: right">
-                            <f:facet name="header">
-                                <h:outputText value="Montant"/>
-                            </f:facet>
-                            <h:outputText value="#{item.total}">
-                                <f:convertNumber/>
-                            </h:outputText>
-                        </p:column>
+                    <p:column style="width: 13%; text-align: right">
+                        <f:facet name="header">
+                            <h:outputText value="Montant"/>
+                        </f:facet>
+                        <h:outputText value="#{item.total}">
+                            <f:convertNumber/>
+                        </h:outputText>
+                    </p:column>
 
-                        <p:columnGroup type="footer">
-                            <p:row>
-                                <p:column colspan="5" style="text-align:left" footerText="Totaux" />                                       
-                                <p:column style="text-align:right" footerText="#{impressionController.format(impressionController.total_1)}" />
-                            </p:row>
-                        </p:columnGroup>
+                    <p:columnGroup type="footer">
+                        <p:row>
+                            <p:column colspan="5" style="text-align:left" footerText="Totaux" />                                       
+                            <p:column style="text-align:right" footerText="#{impressionController.format(impressionController.total_1)}" />
+                        </p:row>
+                    </p:columnGroup>
 
-                    </p:dataTable>
+                </p:dataTable>
 
-                    <p:panel id="info">
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Total 1 (Production Quantity) : " />
-                            <h:outputLabel value="#{impressionController.format(impressionController.total_1)}" />
+                <p:panel id="info">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Total 1 (Production Quantity) : " />
+                        <h:outputLabel value="#{impressionController.format(impressionController.total_1)}" />
 
-                            <h:outputLabel value="Equity Bonus (= Total1 * #{impressionController.format(impressionController.bonus_equity_percentage)} %) : " />
-                            <h:outputLabel value="#{impressionController.format(impressionController.bonus_equity)}" />
+                        <h:outputLabel value="Equity Bonus (= Total1 * #{impressionController.format(impressionController.bonus_equity_percentage)} %) : " />
+                        <h:outputLabel value="#{impressionController.format(impressionController.bonus_equity)}" />
 
-                            <h:outputLabel value="Total 2 = total 1 + Equity bonus : " />
-                            <h:outputLabel value=" #{impressionController.format(impressionController.total_2)}" />
-                        </h:panelGrid>
+                        <h:outputLabel value="Total 2 = total 1 + Equity bonus : " />
+                        <h:outputLabel value=" #{impressionController.format(impressionController.total_2)}" />
+                    </h:panelGrid>
 
-                        <h:panelGrid columns="4">
+                    <h:panelGrid columns="4">
 
-                            <h:outputLabel value="  " />
-                            <h:outputLabel value="---------------- Score ----- " />
-                            <h:outputLabel value="-------- Weight ----" />
-                            <h:outputLabel value="-------- Weighted Score ---" />
+                        <h:outputLabel value="  " />
+                        <h:outputLabel value="---------------- Score ----- " />
+                        <h:outputLabel value="-------- Weight ----" />
+                        <h:outputLabel value="-------- Weighted Score ---" />
 
-                            <h:outputLabel value="Quality Assessment" />
-                            <h:outputLabel value="----------------#{impressionController.quality_assessment_score}" />
-                            <h:outputLabel value="-------- #{impressionController.quality_assessment_weight}" />
-                            <h:outputLabel value="-------- #{impressionController.quality_assessment_scoreweighted}" />
+                        <h:outputLabel value="Quality Assessment" />
+                        <h:outputLabel value="----------------#{impressionController.quality_assessment_score}" />
+                        <h:outputLabel value="-------- #{impressionController.quality_assessment_weight}" />
+                        <h:outputLabel value="-------- #{impressionController.quality_assessment_scoreweighted}" />
 
-                            <h:outputLabel value="Quality Perceived by the community" />
-                            <h:outputLabel value="----------------#{impressionController.quality_perceived_score}" />
-                            <h:outputLabel value="-------- #{impressionController.quality_perceived_weight}" />
-                            <h:outputLabel value="-------- #{impressionController.quality_perceived_scoreweighted}" />
+                        <h:outputLabel value="Quality Perceived by the community" />
+                        <h:outputLabel value="----------------#{impressionController.quality_perceived_score}" />
+                        <h:outputLabel value="-------- #{impressionController.quality_perceived_weight}" />
+                        <h:outputLabel value="-------- #{impressionController.quality_perceived_scoreweighted}" />
 
-                            <h:outputLabel value="Index tool score" />
-                            <h:outputLabel value="----------------#{impressionController.index_tool_score}" />
-                            <h:outputLabel value="-------- #{impressionController.index_tool_weight}" />
-                            <h:outputLabel value="-------- #{impressionController.index_tool_scoreweighted}" />
+                        <h:outputLabel value="Index tool score" />
+                        <h:outputLabel value="----------------#{impressionController.index_tool_score}" />
+                        <h:outputLabel value="-------- #{impressionController.index_tool_weight}" />
+                        <h:outputLabel value="-------- #{impressionController.index_tool_scoreweighted}" />
 
-                        </h:panelGrid>
+                    </h:panelGrid>
 
-                        <h:panelGrid columns="5">
+                    <h:panelGrid columns="5">
 
-                            <h:outputLabel value="" />
-                            <h:outputLabel value="---------------- Month 1 ----- " />
-                            <h:outputLabel value="-------- Month 2 --------" />
-                            <h:outputLabel value="-------- This Month -----" />
-                            <h:outputLabel value="-------- Quarter --------" />
+                        <h:outputLabel value="" />
+                        <h:outputLabel value="---------------- Month 1 ----- " />
+                        <h:outputLabel value="-------- Month 2 --------" />
+                        <h:outputLabel value="-------- This Month -----" />
+                        <h:outputLabel value="-------- Quarter --------" />
 
-                            <h:outputLabel value="Quarterly Production" />
-                            <h:outputLabel value="----------------  ----- " />
-                            <h:outputLabel value="--------  --------" />
-                            <h:outputLabel value="-------- #{impressionController.total_2} -----" />
-                            <h:outputLabel value="-------- #{impressionController.quarterly_production} --------" />
+                        <h:outputLabel value="Quarterly Production" />
+                        <h:outputLabel value="----------------  ----- " />
+                        <h:outputLabel value="--------  --------" />
+                        <h:outputLabel value="-------- #{impressionController.total_2} -----" />
+                        <h:outputLabel value="-------- #{impressionController.quarterly_production} --------" />
 
-                        </h:panelGrid>
-
-                    </p:panel>
+                    </h:panelGrid>
 
                 </p:panel>
-
             </div>
-
         </div>
 
     </h:form>

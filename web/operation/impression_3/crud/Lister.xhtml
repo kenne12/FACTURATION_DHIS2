@@ -14,20 +14,16 @@
 
         <br/>
 
-        <div style="width: 100%">
-
-            <div style="float: left ; width: 25%">
-
+        <div class="row">
+            <div class="col-md-3">
                 <p:tree value="#{impressionNormeeFController.root}" selection="#{impressionNormeeFController.selected}" selectionMode="single" var="node" >
                     <p:treeNode>
                         <h:outputLabel value="#{node}" />
                     </p:treeNode>
                 </p:tree>
-
             </div>
 
-            <div style="float: right ; width: 75%">
-
+            <div class="col-md-9">
                 <center>
                     <p:panelGrid columns="6">
 
@@ -189,7 +185,6 @@
                 </p:panel>
 
             </div>
-
         </div>
 
     </h:form>

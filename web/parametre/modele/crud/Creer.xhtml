@@ -11,7 +11,7 @@
                   widgetVar="ModelCreerDialog" 
                   modal="true" resizable="false" 
                   appendTo="@(body)" 
-                  width="60%"
+                  width="80%"
                   height="550px"
                   header="#{langue['Titre.Dlg.Creation']}: #{langue.modele}" 
                   closeOnEscape="true">
@@ -29,6 +29,11 @@
                         <p:inputText style="width: 75px" id="type" value="#{modeleController.model.type}" required="true" 
                                      requiredMessage="#{langue.type} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="type"/>
+
+                        <p:outputLabel value="Titre Facture" for="facture" />
+                        <p:inputText style="width: 100%" id="facture" value="#{modeleController.model.titre}" required="true" 
+                                     requiredMessage="Titre de facture"/>
+                        <p:message for="facture"/>
 
                         <p:outputLabel value="#{langue['regex.declaration']}" for="declaration" />
                         <p:inputTextarea style="width: 100%" cols="250" rows="1" id="declaration" value="#{modeleController.model.declaredRegex}" required="true" 
@@ -107,23 +112,23 @@
                         <p:inputTextarea style="width: 50%" cols="250" rows="1" id="total_general" value="#{modeleController.model.totalGeneralRegex}" required="true" 
                                          requiredMessage="#{langue['regex.total_general']} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="total_general"/>
-                               
+
                         <p:outputLabel value="#{langue['regex.quality_assessement_score_weighted']}" for="quality_assessement_score_weighted" />
                         <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quality_assessement_score_weighted" value="#{modeleController.model.qualityAssessmentWeightedScoreRegex}" required="true" 
                                          requiredMessage="#{langue['regex.quality_assessement_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="quality_assessement_score_weighted"/>
-                        
+
                         <p:outputLabel value="#{langue['regex.quality_perceived_score_weighted']}" for="quality_perceived_score_weighted" />
                         <p:inputTextarea style="width: 50%" cols="250" rows="1" id="quality_perceived_score_weighted" value="#{modeleController.model.qualityPerceivedWeightedScoreRegex}" required="true" 
                                          requiredMessage="#{langue['regex.quality_perceived_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="quality_perceived_score_weighted"/>
-                        
+
                         <p:outputLabel value="#{langue['regex.index_tool_score_weighted']}" for="index_tool_score_weight" />
                         <p:inputTextarea style="width: 50%" cols="250" rows="1" id="index_tool_score_weight" value="#{modeleController.model.indexToolWeightedScoreRegex}" required="true" 
                                          requiredMessage="#{langue['regex.index_tool_score_weighted']} : #{langue['Conv.ValeurRequise']}"/>
                         <p:message for="index_tool_score_weight"/>
-                        
-                        
+
+
                         <p:outputLabel value="#{langue['regex.global_quality_score']}" for="global_quality_score" />
                         <p:inputTextarea style="width: 50%" cols="250" rows="1" id="global_quality_score" value="#{modeleController.model.globalQualityScoreRegex}" required="true" 
                                          requiredMessage="#{langue['regex.global_quality_score']} : #{langue['Conv.ValeurRequise']}"/>

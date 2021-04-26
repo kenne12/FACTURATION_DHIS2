@@ -27,13 +27,15 @@ public class ModelFcd implements Serializable {
     private Integer modelId;
     @Column(length = 150)
     private String nom;
+    @Column(length = 60)
+    private String titre;
     @Column(length = 10)
     private String annee;
-    @Column(name = "banknamecode" , length = 35)
+    @Column(name = "banknamecode", length = 35)
     private String bankNameCode;
-    @Column(name = "bankaccountnumbercode" , length = 35)
+    @Column(name = "bankaccountnumbercode", length = 35)
     private String bankAccountNumberCode;
-    @Column(name = "totalamountcode" , length = 35)
+    @Column(name = "totalamountcode", length = 35)
     private String totalAmountCode;
 
     public ModelFcd() {
@@ -85,6 +87,14 @@ public class ModelFcd implements Serializable {
 
     public void setTotalAmountCode(String totalAmountCode) {
         this.totalAmountCode = totalAmountCode;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     @Override
